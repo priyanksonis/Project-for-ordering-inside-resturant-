@@ -1,0 +1,7 @@
+ ./manage.py oscar_fork_app catalogue yourappsfolder/
+
+
+./manage.py oscar_fork_app order yourappsfolder/
+./manage.py oscar_fork_app catalogue yourappsfolder/
+
+mkdir yourproject/catalogue

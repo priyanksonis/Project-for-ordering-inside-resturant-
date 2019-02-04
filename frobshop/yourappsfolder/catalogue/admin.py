@@ -1,1 +1,1 @@
-from oscar.apps.catalogue.admin import *  # noqa
+from oscar.apps.catalogue.admin import *

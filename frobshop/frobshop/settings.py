@@ -1,5 +1,3 @@
-from oscar.defaults import *
-
 """
 Django settings for frobshop project.
 
@@ -14,6 +12,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 
+from oscar.defaults import *
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -22,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '*7a$h0#ceawb3z4d*wqel6_*y*!xao8yvvzr+5k@l_vq*1*l%v'
+SECRET_KEY = 'l3wi9l(6m1cc&vv1$#z01vt5fqdcsn^ltb@4yz3elrnl)=!u-5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -31,7 +30,6 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
 
 from oscar import get_core_apps
 
@@ -45,22 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.flatpages',
     'widget_tweaks',
-    #'django.apps',
-    'yourappsfolder.order.apps.OrderConfig',
-    #'yourappsfolder.order'
-] + get_core_apps()
+] + get_core_apps(['yourappsfolder.catalogue'])
 
 SITE_ID = 1
-
-
-
-
-
-
-
-
-
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -74,7 +59,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'frobshop.urls'
-
 
 from oscar import OSCAR_MAIN_TEMPLATE_DIR
 
@@ -103,17 +87,11 @@ TEMPLATES = [
         },
     },
 ]
-
-
-
-
 WSGI_APPLICATION = 'frobshop.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-
-
 
 DATABASES = {
     'default': {
@@ -126,8 +104,6 @@ DATABASES = {
         'ATOMIC_REQUESTS': True,
     }
 }
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -148,12 +124,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-
-AUTHENTICATION_BACKENDS = (
-    'oscar.apps.customer.auth_backends.EmailBackend',
-    'django.contrib.auth.backends.ModelBackend',
-)
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
@@ -173,17 +143,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+AUTHENTICATION_BACKENDS = (
+    'oscar.apps.customer.auth_backends.EmailBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
 
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
     },
-}
-
-OSCAR_INITIAL_ORDER_STATUS = 'Pending'
-OSCAR_INITIAL_LINE_STATUS = 'Pending'
-OSCAR_ORDER_STATUS_PIPELINE = {
-    'Pending': ('Being processed', 'Cancelled',),
-    'Being processed': ('Processed', 'Cancelled',),
-    'Cancelled': (),
 }
