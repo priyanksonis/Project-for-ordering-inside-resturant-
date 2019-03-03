@@ -43,7 +43,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.flatpages',
     'widget_tweaks',
-] + get_core_apps(['yourappsfolder.catalogue'])
+    'debug_toolbar',
+
+] + get_core_apps(['yourappsfolder.promotions'])
+
+
+
+#INSTALLED_APPS = INSTALLED_APPS + get_core_apps(['yourappsfolder.promotions'])
 
 SITE_ID = 1
 MIDDLEWARE = [
@@ -56,16 +62,19 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'oscar.apps.basket.middleware.BasketMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'frobshop.urls'
 
 from oscar import OSCAR_MAIN_TEMPLATE_DIR
+location = lambda x: os.path.join(os.path.dirname(os.path.realpath(__file__)),  x) #added
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
+            location('templates'), # templates directory of the project #added
             os.path.join(BASE_DIR, 'templates'),
             OSCAR_MAIN_TEMPLATE_DIR
         ],
@@ -87,6 +96,11 @@ TEMPLATES = [
         },
     },
 ]
+
+#import pdb
+#pdb.set_trace()
+#print(location('templates'))
+
 WSGI_APPLICATION = 'frobshop.wsgi.application'
 
 
@@ -154,3 +168,15 @@ HAYSTACK_CONNECTIONS = {
         'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
     },
 }
+
+INTERNAL_IPS=['127.0.0.1',]
+
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#STATIC_URL = '/static/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+

@@ -1,0 +1,45 @@
+{% extends "base.html"%}
+
+{% block head_title %}  {{block.super}} {% endblock head_title %}
+
+{% block content%}
+
+
+
+<h1>Hello World!</h1>
+
+<h3>{{ block.super }} </h3>
+<p>
+    This is <code> {% verbatim %} {{ html_var }} {% endverbatim %} </code> coming through 12  
+</p>
+<p>
+{% if num in not None %}
+Random number is {{ num }}
+{% endif %}
+</p>
+
+
+<p>
+   
+ <!-- looping through the context -->
+{% for some_item in some_list %}
+
+       {% if some_item|divisibleby:"2" %}
+         Even number
+       { % endif %}  
+ 
+	   {{some_item}} <br> 
+
+{% endif %}
+{% endfor %}
+
+	   
+
+
+</p>
+
+
+<p>Some item is {{some_item}}</p>
+
+
+{% endblock content%}

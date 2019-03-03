@@ -1,0 +1,51 @@
+1.forking an app:
+
+eg.$ ./manage.py oscar_fork_app order yourappsfolder/
+link:: https://django-oscar.readthedocs.io/en/stable/topics/customisation.html
+
+2. to custmize view
+https://django-oscar.readthedocs.io/en/latest/howto/how_to_customise_a_view.html
+
+3. customize template
+https://django-oscar.readthedocs.io/en/latest/howto/how_to_customise_templates.html#
+Ex. as I did with ase.html
+
+4.to generate requirements.txt
+pip freeze > requirements.txt
+
+5.creating new app
+python manage.py startapp restaurents
+
+
+6. verbatim is used for rendering out varialble on html page
+{% verbatim %} {{ html_var }} {% endverbatim %}
+
+7. template inheritance
+ex::
+
+{% extends "base.html"%}
+
+{% block head_title %}  {{block.super}} {% endblock head_title %}
+
+{% block content%}
+
+
+8.including a template inside a template
+{% include 'snippets/nav.html' %}
+
+
+9. for using class based views we need to import
+from django.views import View   #imported because we are using class based view
+
+
+10.for using template based views (this is best)
+from django.views.generic import TemplateView  #for template based views
+it can be written in urls.py directly
+
+
+11.To have a look at model ,,register it in admin
+Ex.:: 
+
+from .models import RestaurantLocation
+
+admin.site.register(RestaurantLocation) 
