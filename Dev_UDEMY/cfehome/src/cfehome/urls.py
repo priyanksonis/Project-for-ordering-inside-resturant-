@@ -19,27 +19,42 @@ from django.contrib import admin
 #from restaurents.views import home, about, contact ,ContactView ,ContactTemplateView
 
 from django.views.generic import TemplateView
-from restaurents.views import HomeView
+from restaurents.views import restaurant_listview
 
 
-urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    #url(r'^$', home),
-    #url(r'^about/$', about),
-    #url(r'^contact/$', contact),
-    #url(r'^contact/$', ContactView.as_view()),   #url for class basec view
+# urlpatterns = [
+#     url(r'^admin/', admin.site.urls),
+#     #url(r'^$', home),
+#     #url(r'^about/$', about),
+#     #url(r'^contact/$', contact),
+#     #url(r'^contact/$', ContactView.as_view()),   #url for class basec view
 
-    #use this when we want  to give  some argument (kwargs)  ex.:: http://127.0.0.1:8000/contact/2/    instead of http://127.0.0.1:8000/contact/
-    #url(r'^contact/(?P<id>\d+)/$', ContactView.as_view()),   #url for class basec view
-    #url(r'^contact/$', ContactTemplateView.as_view()), #for template based views
+#     #use this when we want  to give  some argument (kwargs)  ex.:: http://127.0.0.1:8000/contact/2/    instead of http://127.0.0.1:8000/contact/
+#     #url(r'^contact/(?P<id>\d+)/$', ContactView.as_view()),   #url for class basec view
+#     #url(r'^contact/$', ContactTemplateView.as_view()), #for template based views
 
 
    
 
-    url(r'^$', HomeView.as_view()),  #because we have extra context in Homeview
+#     url(r'^$', HomeView.as_view()),  #because we have extra context in Homeview
+#     url(r'^about/$', TemplateView.as_view(template_name='about.html')),
+#     url(r'^contact/$', TemplateView.as_view(template_name='contact.html')),
+
+
+
+
+
+#]
+
+
+
+urlpatterns = [
+    url(r'^admin/', admin.site.urls),
+    url(r'^$', TemplateView.as_view(template_name='home.html')),
+    url(r'^restaurants/$', restaurant_listview),
     url(r'^about/$', TemplateView.as_view(template_name='about.html')),
     url(r'^contact/$', TemplateView.as_view(template_name='contact.html')),
-
-
 ]
+    
+
 
