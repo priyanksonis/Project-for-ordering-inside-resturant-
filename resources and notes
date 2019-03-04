@@ -49,3 +49,5 @@ Ex.::
 from .models import RestaurantLocation
 
 admin.site.register(RestaurantLocation) 
+
+12.added
