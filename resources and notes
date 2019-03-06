@@ -50,4 +50,6 @@ from .models import RestaurantLocation
 
 admin.site.register(RestaurantLocation) 
 
-12.added
+12. slug
+
+slug is short and meaningful label or name. Basically used for urls looking simple and robust
