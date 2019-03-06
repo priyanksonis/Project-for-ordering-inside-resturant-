@@ -44,8 +44,9 @@ INSTALLED_APPS = [
     'django.contrib.flatpages',
     'widget_tweaks',
     'debug_toolbar',
+    'yourappsfolder.kitchen',
 
-] + get_core_apps(['yourappsfolder.promotions'])
+] + get_core_apps(['yourappsfolder.promotions','yourappsfolder.order'])
 
 
 
@@ -180,3 +181,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+
+#this line is added to remove connection error (which is caused when we were trying to send email)
+#link to post:::::    https://stackoverflow.com/questions/5802189/django-errno-111-connection-refused
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
