@@ -17,6 +17,8 @@ from oscar.defaults import *
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
@@ -77,7 +79,8 @@ TEMPLATES = [
         'DIRS': [
             location('templates'), # templates directory of the project #added
             os.path.join(BASE_DIR, 'templates'),
-            OSCAR_MAIN_TEMPLATE_DIR
+            OSCAR_MAIN_TEMPLATE_DIR,
+            os.path.join(BASE_DIR, 'yourappsfolder/kitchen/templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {

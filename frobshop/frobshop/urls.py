@@ -36,6 +36,9 @@ from frobshop.app import application as shop
 from django.conf.urls import url, include
 
 
+from yourappsfolder.kitchen.views import orders_listview
+
+
 
 urlpatterns = [
     #url(r'^i18n/', include('django.conf.urls.i18n')),
@@ -50,6 +53,8 @@ urlpatterns = [
     #url(r'', application.urls),
     #path('', application.urls),  # > Django-2.0
     url(r'', shop.urls),
+
+    url(r'^orders_in_kitchen/$', orders_listview),
 ]
 
 
