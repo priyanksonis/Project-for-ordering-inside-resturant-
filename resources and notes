@@ -53,3 +53,26 @@ admin.site.register(RestaurantLocation)
 12. slug
 
 slug is short and meaningful label or name. Basically used for urls looking simple and robust
+
+
+13. run django page on mobile:
+
+ubuntu::
+
+a. run this cmd;
+  ifconfig | grep "inet " | grep -v 127.0.0.1
+
+  it will give some ip's (try below steps with all except localhost, 127.0.0.1)
+  ex: if ip is 162.250.103.1
+
+  step1:run this on terminal :
+  python manage.py runserver 162.250.103.1:8000  
+
+  also add 162.250.103.1 to ALLOWED_HOST (ALLOWED_HOST=['162.250.103.1'])
+
+  step2:
+  open http://162.250.103.1:8000  on laptop
+  open 162.250.103.1:8000   on mobile
+
+
+

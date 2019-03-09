@@ -27,8 +27,8 @@ def orders_listview(request):
 
 
     #list of items in a order
-    import pdb
-    pdb.set_trace()
+    #import pdb
+    #pdb.set_trace()
 
     context = {
         "object_list": queryset
