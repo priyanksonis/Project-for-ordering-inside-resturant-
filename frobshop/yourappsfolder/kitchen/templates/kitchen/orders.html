@@ -8,15 +8,43 @@
 
     <body >
 
-      <h5>Priyank</h5>
+      <h5>These orders will be shown on screen in kitchen</h5>
 
 
-      <ul>
+<ul>
 {% for obj in object_list %}
     <li>{{ obj }} <br/>
-    {{ obj.total_incl_tax }} {{ obj.location }} {{ obj.category }} {{ obj.timestamp }} {{ obj.updated }}</li>
+    
+    {{ obj.id }} {{ obj.date_placed }} {{ obj.category }} {{ obj.timestamp }} {{ obj.updated }}</li>
+
+    {% for key,val in items_in_orders.items %}
+    
+    	{% if obj.id == key %}
+    	
+    		{% for v in val %}
+    			<option value="{{v}}">{{v}}</option>
+    		{% endfor %}
+    	
+    	{% endif %}	
+    
+    {% endfor %}
+    </li>
+
+    <br>
+    <br>
+
+   
+
+
 {% endfor %}
+
+
+
+
 </ul>
+
+   
+
 
 
 

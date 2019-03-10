@@ -23,14 +23,22 @@ def orders_listview(request):
     item={}
 
     for an_order in queryset:
-    	item[an_order]= Line.objects.filter(order_id=13)
+    	item[an_order.id]= Line.objects.filter(order_id=an_order.id)
 
+    
 
     #list of items in a order
     #import pdb
     #pdb.set_trace()
 
+
+    for i in item:
+    	print(i)
+
     context = {
-        "object_list": queryset
+        "object_list": queryset,
+        "items_in_orders":item,
     }
+    #import pdb
+    #pdb.set_trace()
     return render(request, template_name, context)

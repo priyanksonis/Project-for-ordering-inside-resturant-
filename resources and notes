@@ -76,3 +76,27 @@ a. run this cmd;
 
 
 
+14. run project on new machine::
+
+step 1. 
+-create a floder "demo_for_reproduce"
+-go into this folder
+-create virtual environment    command::    virtualenv vir_env_for_demo
+-activate virtual environment  command::    source vir_env_for_demo/bin/activate
+-place requirements.txt in "demo_for_reproduce" folder 
+-run cmd :: pip install -r requirements.txt
+-place requirements.txt in "demo_for_reproduce" folder 
+-paste froshop folder in "demo_for_reproduce"
+-run cmd: python manage.py runserver
+
+
+-to decativate virtualenv ust give this cmd:: deactivate
+
+
+15. forms in django::
+
+https://www.udemy.com/try-django-v1-11-python-web-development/learn/v4/t/lecture/7606862?start=0
+https://github.com/codingforentrepreneurs/Try-Django-1.11/tree/ac75e86395e0e7fa0e33f832348f12f3efa43bac
+lecture 24,25,26
+
+when want to create a form , create as in lec 26, its very optimized way

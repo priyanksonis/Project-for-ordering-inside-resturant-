@@ -26,3 +26,43 @@
 
 
 
+
+    
+    {% for items in items_in_orders[obj.id] %}
+    	<li>{{itmes}}</li>
+
+    {% endfor %}
+
+
+{% for i in items_in_orders %}
+    		{{ i }}
+{% endfor %} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% for obj in object_list %}
+    <li>{{ obj }} <br/>
+    {{ obj.id }} {{ obj.location }} {{ obj.category }} {{ obj.timestamp }} {{ obj.updated }}
+
+    {% if obj.id in items_in_orders %}
+    	{{obj.id}} {{items_in_orders[obj.id][0]}}
+    {% endif %}
+    
+    </li>
+{% endfor %}

@@ -1,9 +1,9 @@
 import random
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render
 
 from django.views import View   #imported because we are using class based view
-from django.views.generic import TemplateView ,ListView ,DetailView#for template based views
+from django.views.generic import TemplateView ,ListView ,DetailView ,CreateView#for template based views
 from django.db.models import Q
 
 from django.shortcuts import render, get_object_or_404
@@ -95,8 +95,60 @@ from django.shortcuts import render, get_object_or_404
 #         return context
 
 
+from .forms import RestaurantCreateForm, RestaurantLocationCreateForm
 
 from .models import RestaurantLocation
+
+
+
+
+
+
+
+# def restaurant_createview(request):
+#     # if request.method == "GET":
+#     #     print("get data")
+#     if request.method == "POST":
+#         title = request.POST.get("title") #request.POST["title"]
+#         location = request.POST.get("location")
+#         category = request.POST.get("category")
+#         obj = RestaurantLocation.objects.create(
+#                 name = title,
+#                 location= location,
+#                 category = category
+
+#             )
+#         return HttpResponseRedirect("/restaurants/")
+#     template_name = 'restaurents/form.html'
+#     context = {}
+#     return render(request, template_name, context)
+
+
+
+def restaurant_createview(request):
+    form = RestaurantCreateForm(request.POST or None)
+    errors = None
+    if form.is_valid():
+        obj = RestaurantLocation.objects.create(
+                name = form.cleaned_data.get('name'),
+                location= form.cleaned_data.get('location'),
+                category = form.cleaned_data.get('category')
+
+            )
+        return HttpResponseRedirect("/restaurants/")
+    if form.errors:
+        errors = form.errors
+           
+    template_name = 'restaurents/form.html'
+    context = {"form": form, "errors": errors}
+    return render(request, template_name, context)
+
+
+
+
+
+
+
 
 def restaurant_listview(request):
     template_name = 'restaurents/restaurents_list.html'
@@ -135,3 +187,7 @@ class RestaurantDetailView(DetailView):
 
 
 
+class RestaurantCreateView(CreateView):
+    form_class = RestaurantLocationCreateForm
+    template_name = 'restaurents/form.html'
+    success_url = "/restaurants/"
