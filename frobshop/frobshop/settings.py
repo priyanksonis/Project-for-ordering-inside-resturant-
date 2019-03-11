@@ -48,7 +48,24 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'yourappsfolder.kitchen',
 
-] + get_core_apps(['yourappsfolder.promotions','yourappsfolder.order'])
+] + get_core_apps([
+    'yourappsfolder.address',
+    'yourappsfolder.analytics',
+    'yourappsfolder.basket',
+    'yourappsfolder.catalogue',
+    'yourappsfolder.checkout',
+    'yourappsfolder.customer',
+    'yourappsfolder.dashboard',
+    'yourappsfolder.kitchen',
+    'yourappsfolder.offer',
+    'yourappsfolder.order',
+    'yourappsfolder.partner',
+    'yourappsfolder.payment',
+    'yourappsfolder.promotions',
+    'yourappsfolder.search',
+    'yourappsfolder.shipping',
+    'yourappsfolder.voucher',
+    'yourappsfolder.wishlists',])
 
 
 
