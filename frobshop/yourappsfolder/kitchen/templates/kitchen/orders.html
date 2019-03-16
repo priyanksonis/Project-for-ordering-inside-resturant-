@@ -13,9 +13,10 @@
 
 <ul>
 {% for obj in object_list %}
-    <li>{{ obj }} <br/>
+    <li> {{ obj }} 
     
-    {{ obj.id }} {{ obj.date_placed }} {{ obj.category }} {{ obj.timestamp }} {{ obj.updated }}</li>
+     {{ obj.id }} <br> <br>{{ obj.date_placed }} {{ obj.category }} {{ obj.timestamp }} {{ obj.updated }}
+    </li>
 
     {% for key,val in items_in_orders.items %}
     
