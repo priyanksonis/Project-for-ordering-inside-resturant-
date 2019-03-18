@@ -94,11 +94,11 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR,'yourappsfolder/catalogue/templates'),
+            #os.path.join(BASE_DIR,'yourappsfolder/catalogue/templates'),
             location('templates'), # templates directory of the project #added
-            os.path.join(BASE_DIR, 'templates'),
-            OSCAR_MAIN_TEMPLATE_DIR,
-            os.path.join(BASE_DIR, 'yourappsfolder/kitchen/templates'),
+            #os.path.join(BASE_DIR, 'templates'),
+            #OSCAR_MAIN_TEMPLATE_DIR,
+            #os.path.join(BASE_DIR, 'yourappsfolder/kitchen/templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {

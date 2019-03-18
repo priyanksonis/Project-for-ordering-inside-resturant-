@@ -9,13 +9,27 @@
     {% if summary %}{{ summary }} |{% endif %} {{ block.super }}
 {% endblock %}
 
+{% block headertext %}{{ summary }}{% endblock %}
+
+
+{% block breadcrumbs %}
+<p>Priyank Soni</p>
+    <ul class="breadcrumb">
+        <li>
+            <a href="{{ homepage_url }}">{% trans "Home" %}</a>
+        </li>
+        <li class="active">{{ summary }}</li>
+    </ul>
+
+<p>Priyank Soni1</p>
+{% endblock breadcrumbs %}
+
 
 
 
 {% block column_left %}
     <p>Priyank Soni2</p>
     {% category_tree as tree_categories %}
-    
     {% if tree_categories %}
         <h4>{% trans "Show results for" %}</h4>
         <div class="side_categories">
@@ -38,8 +52,6 @@
             </ul>
         </div>
     {% endif %}
-    
-
     {% if has_facets %}
         <h4>{% trans "Refine by" %}</h4>
         <div class="side_categories">
