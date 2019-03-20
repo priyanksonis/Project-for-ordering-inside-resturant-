@@ -18,22 +18,26 @@
 {% endblock %}
 
 {% block layout %}
-    {# Top-horizontal bar with account, notifictions, dashboard links #}
-    {% include "partials/nav_accounts.html" %}
+    
+    {% block navigation_and_upper%}
 
-    {# Site logo/title, mini-basket, browse dropdown and searchbox #}
-    <header class="header container-fluid">
-        <div class="page_inner">
-            <div class="row">
-                {% include "partials/brand.html" %}
-                {# Mini-basket wrapped in a block so some templates can now display it #}
-                {% block mini_basket %}{% include "partials/mini_basket.html" %}{% endblock %}
+        {# Top-horizontal bar with account, notifictions, dashboard links #}
+        {% include "partials/nav_accounts.html" %}
+
+        {# Site logo/title, mini-basket, browse dropdown and searchbox #}
+        <header class="header container-fluid">
+            <div class="page_inner">
+                <div class="row">
+                    {% include "partials/brand.html" %}
+                    {# Mini-basket wrapped in a block so some templates can now display it #}
+                    {% block mini_basket %}{% include "partials/mini_basket.html" %}{% endblock %}
+                </div>
             </div>
-        </div>
-        {% block navigation %}
-            {% include "partials/nav_primary.html" %}
-        {% endblock %}
-    </header>
+            {% block navigation %}
+                {% include "partials/nav_primary.html" %}
+            {% endblock %}
+        </header>
+    {% endblock %}
 
     {# Main content of page - other layout templates may override this block #}
     {% block content_wrapper %}
