@@ -6,6 +6,8 @@ from django.db.models.signals import pre_save, post_save
 from .utils import unique_slug_generator
 from .validators import validate_category
 
+from django.core.urlresolvers import reverse
+
 User = settings.AUTH_USER_MODEL
 
 class RestaurantLocation(models.Model):
@@ -19,6 +21,10 @@ class RestaurantLocation(models.Model):
     #my_date_field   = models.DateField(auto_now=False, auto_now_add=False)
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self): #get_absolute_url
+        #return f"/restaurants/{self.slug}" 
+        return reverse('restaurants:detail', kwargs={'slug': self.slug})    
 
     @property
     def title(self):

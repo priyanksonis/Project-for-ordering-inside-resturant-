@@ -124,6 +124,9 @@ lec. 31
 
 
 21.using django's LoginView
-lec. 32
+user is required to be logged in for creating a restaurent
+lec. 32  (LoginRequiredMixin)
 
-22.
+22. use url short pattern inside a template (like {% url "abcd" %}) or (using reverse to short urls)
+-If we want to make an app reusable, the app should have its own urls.py and in our proejct's urlpattern in urls.py that can be included.
+lec. 33
