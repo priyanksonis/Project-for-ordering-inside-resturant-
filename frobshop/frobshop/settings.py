@@ -47,6 +47,13 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'debug_toolbar',
     'yourappsfolder.kitchen',
+    'yourappsfolder.accounts',
+    'yourappsfolder.books',
+
+    # External apps
+    'bootstrap_modal_forms',
+    #'widget_tweaks',
+    
 
 ] + get_core_apps([
     'yourappsfolder.address',
@@ -65,7 +72,8 @@ INSTALLED_APPS = [
     'yourappsfolder.search',
     'yourappsfolder.shipping',
     'yourappsfolder.voucher',
-    'yourappsfolder.wishlists',])
+    'yourappsfolder.wishlists',
+    ])
 
 
 

@@ -13,8 +13,14 @@
 
 <ul>
 {% for obj in object_list %}
+
+
+
+
     <li> {{ obj }} 
-    
+        
+
+
      {{ obj.id }} <br> <br>{{ obj.date_placed }} {{ obj.category }} {{ obj.timestamp }} {{ obj.updated }}
     </li>
 
@@ -27,14 +33,22 @@
     		{% endfor %}
     	
     	{% endif %}	
+
+
     
     {% endfor %}
     </li>
 
-    <br>
-    <br>
+    
+  
 
-   
+    <div class="container">
+      <a href="#" class="btn btn-primary" role="button">Link Button</a>
+    </div>
+
+    <br>
+    <br>
+ 
 
 
 {% endfor %}

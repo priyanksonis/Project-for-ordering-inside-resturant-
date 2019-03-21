@@ -32,8 +32,8 @@ def orders_listview(request):
     #pdb.set_trace()
 
 
-    for i in item:
-    	print(i)
+    #for i in item:
+    	#print(i)
 
     context = {
         "object_list": queryset,
@@ -42,3 +42,5 @@ def orders_listview(request):
     #import pdb
     #pdb.set_trace()
     return render(request, template_name, context)
+
+

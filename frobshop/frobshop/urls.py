@@ -37,6 +37,7 @@ from django.conf.urls import url, include
 
 
 from yourappsfolder.kitchen.views import orders_listview
+from yourappsfolder.kitchen import views
 
 
 
@@ -55,6 +56,11 @@ urlpatterns = [
     url(r'', shop.urls),
 
     url(r'^orders_in_kitchen/$', orders_listview),
+
+    path('admin_1/', admin.site.urls),
+    path('accounts/', include('yourappsfolder.accounts.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('1/', include('yourappsfolder.books.urls')),
 ]
 
 
