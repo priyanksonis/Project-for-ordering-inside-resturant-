@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'debug_toolbar',
     'yourappsfolder.kitchen',
-    'yourappsfolder.accounts',
+    #'yourappsfolder.accounts',
     'yourappsfolder.books',
 
     # External apps
@@ -202,6 +202,7 @@ HAYSTACK_CONNECTIONS = {
 INTERNAL_IPS=['127.0.0.1',]
 
 
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
@@ -214,3 +215,29 @@ MEDIA_URL = '/media/'
 #this line is added to remove connection error (which is caused when we were trying to send email)
 #link to post:::::    https://stackoverflow.com/questions/5802189/django-errno-111-connection-refused
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+
+
+
+
+
+
+# STATICFILES_FINDERS = [
+#     # searches in STATICFILES_DIRS
+#     'django.contrib.staticfiles.finders.FileSystemFinder',
+#     # searches in STATIC subfolder of each app
+#     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+# ]
+
+# STATIC_URL = '/static/'
+# MEDIA_URL = '/media/'
+
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "static"),
+# ]
+
+# STATIC_ROOT = os.path.join(BASE_DIR, "static_files")
+# MEDIA_ROOT = os.path.join(BASE_DIR, "media_files")
+
+# INTERNAL_IPS=['127.0.0.1',]

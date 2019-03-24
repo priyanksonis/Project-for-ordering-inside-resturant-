@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE|default:"en-gb" }}" class="no-js">
     <head>
-        <meta http-equiv="refresh" content="3" />
+        <meta http-equiv="refresh" content="15" />
 
 
     </head>
@@ -11,36 +11,61 @@
       <h5>These orders will be shown on screen in kitchen</h5>
 
 
-<ul>
-{% for obj in object_list %}
+        <ul>
+            {% for obj in object_list %}
+                <li> {{ obj }} 
+                    {{ obj.id }} <br> <br>{{ obj.date_placed }} {{ obj.category }} {{ obj.timestamp }} {{ obj.updated }}
+                </li>
 
-
-
-
-    <li> {{ obj }} 
+                {% for key,val in items_in_orders.items %}
+                    {% if obj.id == key %}
+                       {% for v in val %}
+                             <option value="{{v}}">{{v}}</option>
+                       {% endfor %}
         
-
-
-     {{ obj.id }} <br> <br>{{ obj.date_placed }} {{ obj.category }} {{ obj.timestamp }} {{ obj.updated }}
-    </li>
-
-    {% for key,val in items_in_orders.items %}
-    
-    	{% if obj.id == key %}
-    	
-    		{% for v in val %}
-    			<option value="{{v}}">{{v}}</option>
-    		{% endfor %}
-    	
-    	{% endif %}	
-
+                    {% endif %} 
+                {% endfor %}
+                </li>
 
     
-    {% endfor %}
-    </li>
+                        {% for key,val in kitchen_orders_book.items %}
+                    {% if obj.id == key %}
 
-    
-  
+
+
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">ChefName</th>
+                          <th scope="col">Time</th>
+                        </tr>
+                      </thead>
+            
+                      <tbody>
+
+                       {% for v in val %}
+                             <tr>
+                                <th scope="row">{{forloop.counter}}</th>
+                                <td>{{v.chefname}}</td>
+                                <td>{{v.time}}</td>
+                            </tr>
+                       {% endfor %}
+                    </tbody>
+
+                    </table>
+                    
+        
+                    {% endif %} 
+            {% endfor %}
+
+
+           
+            <form method='POST'> {% csrf_token %}
+                {{ form }}
+                <button type='submit'>Save</button>
+            </form>
+
 
     <div class="container">
       <a href="#" class="btn btn-primary" role="button">Link Button</a>
