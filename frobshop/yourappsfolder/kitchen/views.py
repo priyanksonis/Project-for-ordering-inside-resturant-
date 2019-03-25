@@ -121,6 +121,62 @@ class KitchenBook(CreateView):
 
 
 
+class KitchenBook1(CreateView):
+    """docstring for ClassName"""
+    #queryset = Order.objects.all()
+
+    order_obj = Order.objects.all()
+    template_name = 'kitchen/orders_new.html'
+    
+    
+    success_url="/orders_in_kitchen_new1/"
+    form_class = KitchenBookForm
+
+    def get_context_data(self, **kwargs):
+        order_obj = Order.objects.all()
+        item={}
+        row_in_KitchenOrderBook_table={}
+        for an_order in order_obj:
+            item[an_order.id]= Line.objects.filter(order_id=an_order.id)
+            row_in_KitchenOrderBook_table[an_order.id]=KitchenOrderBook.objects.filter(order_id = an_order.id)
+
+        context = super(KitchenBook1, self).get_context_data(**kwargs)
+        context["object_list"] = order_obj
+        context["items_in_orders"] = item
+        context["kitchen_orders_book"] = row_in_KitchenOrderBook_table
+        return context
+
+
+
+
+
+
+class KitchenBook2(CreateView):
+    """docstring for ClassName"""
+    #queryset = Order.objects.all()
+
+    order_obj = Order.objects.all()
+    template_name = 'kitchen/order_in_kitchen_final.html'
+    
+    
+    success_url="/orders_in_kitchen_new_final/"
+    form_class = KitchenBookForm
+
+    def get_context_data(self, **kwargs):
+        order_obj = Order.objects.all()
+        item={}
+        row_in_KitchenOrderBook_table={}
+        for an_order in order_obj:
+            item[an_order.id]= Line.objects.filter(order_id=an_order.id)
+            row_in_KitchenOrderBook_table[an_order.id]=KitchenOrderBook.objects.filter(order_id = an_order.id)
+
+        context = super(KitchenBook2, self).get_context_data(**kwargs)
+        context["object_list"] = order_obj
+        context["items_in_orders"] = item
+        context["kitchen_orders_book"] = row_in_KitchenOrderBook_table
+        return context
+
+
 
 
 

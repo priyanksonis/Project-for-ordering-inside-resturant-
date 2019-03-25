@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE|default:"en-gb" }}" class="no-js">
+    <head>
+        {% load static %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <meta http-equiv="refresh" content="10" />
+        <style>
+          .table-bordered {
+            border-width:30px;
+            border-color:purple;
+          }
+          hr{
+            margin-left:200px;
+            margin-right: 200px;
+            border-width: 5px;
+            border-color:blue;
+          }
+        </style>
+ </head>
+ <body>
+  <br>
+ <center><h5 style="color:blue";>These orders will be shown on screen in kitchen</h5></center>
+ <hr>
+  <table class="table table-light table-bordered table-striped "> 
+    <thead class="alert-primary">
+        <tr>
+          <th>Sr.No</th>
+            <th>TableId</th>
+            <th>Date</th>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>kitchenForm</th>
+        </tr>
+    </thead>
+          <tbody>    
+               
+            {% for obj in object_list %}
+                  <tr>
+                    <td>{{ obj.id }}</td>
+                    <td>{{ obj }} </td>
+                    <td>{{ obj.date_placed }}{{ obj.timestamp }}{{ obj.category }}{{ obj.updated }}</td>
+                    <td>
+                        {% for key,val in items_in_orders.items %}
+    	                   {% if obj.id == key %}
+    	             		      {% for v in val %}
+           <!--  <option value="{{v}}">{{v.title}}</option>-->
+                              <option value="{{v}}">{{v.title}}</option>
+    		                    {% endfor %}    	
+    	                     {% endif %}	
+                        {% endfor %}
+                    </td>
+             <!--changed-->
+                    <td>
+                    {% for key,val in items_in_orders.items %}
+                        {% if obj.id == key %}
+                            {% for v in val %}
+           <!--  <option value="{{v}}">{{v.title}}</option>-->
+                              <option value="{{v}}">{{v.quantity}}</option>
+                            {% endfor %}
+                        {% endif %}  
+                    {% endfor %}
+                    </td> <!--changed end-->
+
+                    <td>
+               
+
+              <!-- 
+            <form method='POST'>   {% csrf_token %}
+                <tr><th><label for="id_order_id">Order id:</label></th><td><input type="number" readonly name="order_id" required id="id_order_id" value=  {{ obj.id }} ></td></tr>
+                <tr><th><label for="id_chefname">Chefname:</label></th><td><input type="text" name="chefname" required maxlength="120" id="id_chefname"></td></tr>
+                <tr><th><label for="id_time">Time:</label></th><td><input type="text" name="time" required maxlength="120" id="id_time"></td></tr>
+                <button type='submit'>Save</button>
+            </form>
+ -->
+
+
+
+
+                     {% for key,val in kitchen_orders_book.items %}
+                    {% if obj.id == key %}
+
+
+
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">ChefName</th>
+                          <th scope="col">Time</th>
+                        </tr>
+                      </thead>
+            
+                      <tbody>
+
+                       {% for v in val %}
+                             <tr>
+                                <th scope="row">{{forloop.counter}}</th>
+                                <td>{{v.chefname}}</td>
+                                <td>{{v.time}}</td>
+                            </tr>
+                       {% endfor %}
+                    </tbody>
+
+                    </table>
+                    
+        
+                    {% endif %} 
+                    {% endfor %}
+
+
+
+
+
+
+                    <div>
+                    <form method='POST'>   {% csrf_token %}
+                    <tr><th><label for="id_order_id">Order id:</label></th><td><input type="number" readonly name="order_id" required id="id_order_id" value=  {{ obj.id }} ></td></tr>
+                    <tr><th><label for="id_chefname">Chefname:</label></th><td><input type="text" name="chefname" required maxlength="120" id="id_chefname"></td></tr>
+                    <tr><th><label for="id_time">Time:</label></th><td><input type="text" name="time" required maxlength="120" id="id_time"></td></tr>
+                    <button type='submit'>Save</button>
+                    </form>
+                    </div>
+
+
+
+                    </td>
+
+            
+            
+        {% endfor %}
+
+
+
+      </tr>
+
+
+</tbody>
+
+</table>
+    </body>
+</html>
+
+
+
+
+

@@ -59,7 +59,9 @@ urlpatterns = [
     #path(r'^orders_in_kitchen_new/$', views.KitchenBook.as_view(), name='kitchen_book'),
     url(r'^orders_in_kitchen_new/$', views.KitchenBook.as_view()),
     #url(r'^orders_in_kitchen_new/$', views.Index.as_view()),
-    url(r'^orders_in_kitchen_new1/$', views.ListAppendView.as_view()),
+    url(r'^orders_in_kitchen_new1/$', views.KitchenBook1.as_view()),
+
+    url(r'^orders_in_kitchen_new_final/$', views.KitchenBook2.as_view()),
 
     #url(r'^orders_in_kitchen/$', views.Index.as_view(), name='index'),
 
