@@ -146,7 +146,7 @@ lec: 37
 
 
 25. user profile view
-usin this in detail view::
+using this in detail view::
 return get_object_or_404(User, username__iexact=username, is_active=True)
 lec. 38
 
