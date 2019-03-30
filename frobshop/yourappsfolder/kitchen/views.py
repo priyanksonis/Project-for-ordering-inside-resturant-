@@ -32,7 +32,8 @@ class KitchenBook(CreateView):
     
     success_url="/orders_in_kitchen/"
     form_class = KitchenBookForm
-
+    ####
+    print("priyank")
     def get_context_data(self, **kwargs):
         order_obj = Order.objects.all()
         item={}

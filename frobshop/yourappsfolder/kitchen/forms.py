@@ -11,6 +11,7 @@ class KitchenBookForm(forms.ModelForm):
 	        model = KitchenOrderBook
 	        fields = [
 	        	'order_id',
+	        	'order_number',
 	            'chefname',
 	            'time',
 	        ]
