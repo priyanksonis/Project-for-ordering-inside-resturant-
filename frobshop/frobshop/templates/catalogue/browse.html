@@ -1,4 +1,4 @@
-{% extends "layout_2_col.html" %}
+{% extends "layout_for_home.html" %}
 
 {% load basket_tags %}
 {% load category_tags %}
@@ -9,41 +9,48 @@
     {% if summary %}{{ summary }} |{% endif %} {{ block.super }}
 {% endblock %}
 
-{% block headertext %}{{ summary }}{% endblock %}
 
-{% block breadcrumbs %}
-    <ul class="breadcrumb">
-        <li>
-            <a href="{{ homepage_url }}">{% trans "Home" %}</a>
-        </li>
-        <li class="active">{{ summary }}</li>
-    </ul>
-{% endblock breadcrumbs %}
+
 
 {% block column_left %}
     {% category_tree as tree_categories %}
+    
     {% if tree_categories %}
-        <h4>{% trans "Show results for" %}</h4>
         <div class="side_categories">
-            <ul class="nav nav-list">
                 {% for tree_category, info in tree_categories %}
-                    <li>
-                        <a href="{{ tree_category.get_absolute_url }}">
+                    
+
+                    
+                        <a href="{{ tree_category.get_absolute_url }}" class="btn btn-info" role="button">
                             {% if tree_category.pk == category.pk %}
                                 <strong>{{ tree_category.name }}</strong>
                             {% else %}
                                 {{ tree_category.name }}
                             {% endif %}
                         </a>
+                     
 
-                        {% if info.has_children %}<ul>{% else %}</li>{% endif %}
+                        {% if info.has_children %}<{% else %} {% endif %}
                         {% for n in info.num_to_close %}
-                            </ul></li>
+            
+                            
                         {% endfor %}
                 {% endfor %}
-            </ul>
+            
         </div>
     {% endif %}
+    
+
+
+
+
+
+
+
+
+
+
+
     {% if has_facets %}
         <h4>{% trans "Refine by" %}</h4>
         <div class="side_categories">
@@ -57,7 +64,6 @@
 {% endblock %}
 
 {% block content %}
-
     <form method="get" class="form-horizontal">
         {# Render other search params as hidden inputs #}
         {% for value in selected_facets %}
@@ -96,7 +102,10 @@
             <div>
                 <ol class="row">
                     {% for product in products %}
-                        <li class="col-xs-6 col-sm-4 col-md-3 col-lg-3">{% render_product product %}</li>
+                        <li class="col-md-4">
+                            
+                            {% render_product product %}
+                        </li>
                     {% endfor %}
                 </ol>
                 {% include "partials/pagination.html" %}
@@ -109,6 +118,8 @@
 {% endblock content %}
 
 {% block onbodyload %}
+<p>Priyank Soni6</p>
     {{ block.super }}
     oscar.search.init();
+<p>Priyank Soni7</p>
 {% endblock %}

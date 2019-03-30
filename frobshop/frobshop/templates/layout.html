@@ -8,32 +8,46 @@
         files in your project, then set OSCAR_USE_LESS = True in your
         settings file. This will enable the on-the-fly less compiler.
     {% endcomment %}
-    {% if use_less %}
-        <link rel="stylesheet/less" type="text/css" href="{% static "oscar/less/styles.less" %}" />
-    {% else %}
-        <link rel="stylesheet" type="text/css" href="{% static "oscar/css/styles.css" %}" />
-    {% endif %}
+ 
+    
+    
+
+    <link rel="stylesheet" type="text/css" href="{% static "oscar/css/any.css" %}" />
+
+    
     <link rel="stylesheet" href="{% static "oscar/js/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css" %}" />
     <link rel="stylesheet" type="text/css" href="{% static "oscar/css/datetimepicker.css" %}" />
 {% endblock %}
 
 {% block layout %}
-    {# Top-horizontal bar with account, notifictions, dashboard links #}
-    {% include "partials/nav_accounts.html" %}
+    
+    {% block navigation_and_upper%}
 
-    {# Site logo/title, mini-basket, browse dropdown and searchbox #}
-    <header class="header container-fluid">
-        <div class="page_inner">
-            <div class="row">
-                {% include "partials/brand.html" %}
-                {# Mini-basket wrapped in a block so some templates can now display it #}
-                {% block mini_basket %}{% include "partials/mini_basket.html" %}{% endblock %}
+        {# Top-horizontal bar with account, notifictions, dashboard links #}
+        <!--chirag:nav_accounts.html and whole header tag not needed at all
+{% include "partials/nav_accounts.html" %}
+-->
+<!--instead we need the following nav_primary_new on top of center tag-->
+
+{# Site logo/title, mini-basket, browse dropdown and searchbox #}
+
+{% include "partials/nav_primary_new.html" %}<!--added by chirag-->
+<center>
+    <p style="font-size:50px;">TAJ</p>
+</center>
+        <!--<header class="header container-fluid">
+            <div class="page_inner">
+                <div class="row">
+                    {% include "partials/brand.html" %}
+                    {# Mini-basket wrapped in a block so some templates can now display it #}
+                    {% block mini_basket %}{% include "partials/mini_basket.html" %}{% endblock %}
+                </div>
             </div>
-        </div>
-        {% block navigation %}
-            {% include "partials/nav_primary.html" %}
-        {% endblock %}
-    </header>
+            {% block navigation %}
+                {% include "partials/nav_primary.html" %}
+            {% endblock %}
+        </header>-->
+    {% endblock %}
 
     {# Main content of page - other layout templates may override this block #}
     {% block content_wrapper %}
@@ -62,6 +76,8 @@
                 </div>
             </div>
         </div>
+       
+
     {% endblock %}
 
     {% include "partials/footer.html" %}
@@ -85,6 +101,29 @@
 
     <script src="{% static "oscar/js/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js" %}"></script>
     <script src="{% static "oscar/js/bootstrap-datetimepicker/locales/bootstrap-datetimepicker.all.js" %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+ <script>
+        function openNav() {
+          //document.getElementById("mySidenav").style.width = "400px";
+        }
+        
+        function closeNav() {
+          document.getElementById("mySidenav").style.width = "0";
+        }
+        function myFunction() {
+  //document.getElementById("opener").click(); // Click on the checkbox
+}
+var input = document.getElementById("myBtn");
+//alert(input);
+input.onclick= 
+   jQuery(function(){
+   jQuery('#opener').click();
+});
+
+
+
+        </script>
 {% endblock %}
 
 {% block extrascripts %}

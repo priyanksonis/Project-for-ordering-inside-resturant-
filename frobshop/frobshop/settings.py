@@ -15,7 +15,9 @@ import os
 from oscar.defaults import *
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+print(BASE_DIR)
+STATICFILES_DIRS = [os.path.join(BASE_DIR,'yourappsfolder/static')]
+#OSCAR_USE_LESS = False
 
 
 
@@ -94,11 +96,11 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR,'yourappsfolder/catalogue/templates'),
+            #os.path.join(BASE_DIR,'yourappsfolder/catalogue/templates'),
             location('templates'), # templates directory of the project #added
-            os.path.join(BASE_DIR, 'templates'),
-            OSCAR_MAIN_TEMPLATE_DIR,
-            os.path.join(BASE_DIR, 'yourappsfolder/kitchen/templates'),
+            #os.path.join(BASE_DIR, 'templates'),
+            #OSCAR_MAIN_TEMPLATE_DIR,
+            #os.path.join(BASE_DIR, 'yourappsfolder/kitchen/templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -197,7 +199,7 @@ INTERNAL_IPS=['127.0.0.1',]
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-#STATIC_URL = '/static/'
+STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
@@ -205,4 +207,4 @@ MEDIA_URL = '/media/'
 
 #this line is added to remove connection error (which is caused when we were trying to send email)
 #link to post:::::    https://stackoverflow.com/questions/5802189/django-errno-111-connection-refused
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' 
