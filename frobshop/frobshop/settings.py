@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'yourappsfolder.books',
 
     # External apps
-    'bootstrap_modal_forms',
+    #'bootstrap_modal_forms',
     #'widget_tweaks',
     
 
