@@ -46,8 +46,8 @@ class RestaurantLocation(models.Model):
 
     objects = RestaurantLocationManager()
 
-    import pdb
-    pdb.set_trace()
+    #import pdb
+    #pdb.set_trace()
     
     def __str__(self):
         return self.name

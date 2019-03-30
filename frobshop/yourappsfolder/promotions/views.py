@@ -13,51 +13,57 @@ from ..kitchen.models import KitchenOrderBook
 class HomeView(CoreCatalogueView,ListView):
     #template_name='catalogue/browse_new.html'
     print("hi")
-    qs=User.objects.all()
-    for i in qs:
-        print(i.first_name)
-    print(qs)
+    #qs=User.objects.all()
+    #for i in qs:
+    #    print(i.first_name)
+    #print(qs)
     
     #def my_view(request):
     #i=0
+
+
+
     def get_context_data(self, **kwargs):
-        i=0
-        print(i)
-        i=i+1
-        username = None
-        #import pdb
-        #pdb.set_trace()
-        self.object_list = self.get_queryset()
-        user = User.objects.get(username=self.request.user.username)
-        context = super(HomeView, self).get_context_data(**kwargs)
-        context["val"]=i
-        #context["object_list"]="object_list"
-        #context["uname"]=user
-        print(user.first_name)
-        print(user.id)
+        try:
+            i=0
+            print(i)
+            i=i+1
+            username = None
+            #import pdb
+            #pdb.set_trace()
+            self.object_list = self.get_queryset()
+            user = User.objects.get(username=self.request.user.username)
+            context = super(HomeView, self).get_context_data(**kwargs)
+            context["val"]=i
+            #context["object_list"]="object_list"
+            #context["uname"]=user
+            print(user.first_name)
+            print(user.id)
 
-        order_id_for_crnt_usr=Order.objects.filter(user_id=user.id)
-        print(order_id_for_crnt_usr)
-        
-        #prints all orders ids for logged in usr 
-        for ii in order_id_for_crnt_usr:
-        	print(ii.id)
-        
-        #getting latest entry from KitchenOrderBook	
-        KitchenOrderBookQS=KitchenOrderBook.objects.filter(order_id=50).last()
-        
-        #this holds <order_id, latest_object_of_KitchenOrderBook> for current user
-        ord_id_KitchenOrderBook={}
+            order_id_for_crnt_usr=Order.objects.filter(user_id=user.id)
+            print(order_id_for_crnt_usr)
+            
+            #prints all orders ids for logged in usr 
+            for ii in order_id_for_crnt_usr:
+            	print(ii.id)
+            
+            #getting latest entry from KitchenOrderBook	
+            KitchenOrderBookQS=KitchenOrderBook.objects.filter(order_id=50).last()
+            
+            #this holds <order_id, latest_object_of_KitchenOrderBook> for current user
+            ord_id_KitchenOrderBook={}
 
-        for ii in order_id_for_crnt_usr:
-        	ord_id_KitchenOrderBook[ii.id]=KitchenOrderBook.objects.filter(order_id=ii.id).last()
-        	#print(ii.id)
-        
+            for ii in order_id_for_crnt_usr:
+            	ord_id_KitchenOrderBook[ii.id]=KitchenOrderBook.objects.filter(order_id=ii.id).last()
+            	#print(ii.id)
+            
 
-        context["ord_id_KitchenOrderBook"]=ord_id_KitchenOrderBook
-        #import pdb
-        #pdb.set_trace()
-        return context
+            context["ord_id_KitchenOrderBook"]=ord_id_KitchenOrderBook
+            #import pdb
+            #pdb.set_trace()
+            return context
+        except:
+            pass    
 
     def get_queryset(self):
        """Return the last five published questions."""
