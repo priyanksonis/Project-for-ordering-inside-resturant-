@@ -17,6 +17,8 @@ def orders_listview(request):
     template_name = 'kitchen/orders.html'
     queryset = Order.objects.all()
 
+    print("priyank")
+
     queryset_items=Line.objects.filter(order_id=13)
 
 
