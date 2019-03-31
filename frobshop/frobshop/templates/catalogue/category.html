@@ -22,7 +22,7 @@
 {% block breadcrumbs %}
     <ul class="breadcrumb">
         <li>
-            <a href="{{ homepage_url }}">{% trans "Home" %}</a>
+            <a href="{{ homepage_url }}">You are here:&nbsp;{% trans "Home" %}</a>
         </li>
         {% for category in category.get_ancestors %}
             <li>

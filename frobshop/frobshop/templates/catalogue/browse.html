@@ -12,56 +12,7 @@
 
 
 
-{% block column_left %}
-    {% category_tree as tree_categories %}
-    
-    {% if tree_categories %}
-        <div class="side_categories">
-                {% for tree_category, info in tree_categories %}
-                    
 
-                    
-                        <a href="{{ tree_category.get_absolute_url }}" class="btn btn-info" role="button">
-                            {% if tree_category.pk == category.pk %}
-                                <strong>{{ tree_category.name }}</strong>
-                            {% else %}
-                                {{ tree_category.name }}
-                            {% endif %}
-                        </a>
-                     
-
-                        {% if info.has_children %}<{% else %} {% endif %}
-                        {% for n in info.num_to_close %}
-            
-                            
-                        {% endfor %}
-                {% endfor %}
-            
-        </div>
-    {% endif %}
-    
-
-
-
-
-
-
-
-
-
-
-
-    {% if has_facets %}
-        <h4>{% trans "Refine by" %}</h4>
-        <div class="side_categories">
-            {% for field, data in facet_data.items %}
-                {% if data.results %}
-                    {% include 'search/partials/facet.html' with name=data.name items=data.results %}
-                {% endif %}
-            {% endfor %}
-        </div>
-    {% endif %}
-{% endblock %}
 
 {% block content %}
     <form method="get" class="form-horizontal">
@@ -102,7 +53,7 @@
             <div>
                 <ol class="row">
                     {% for product in products %}
-                        <li class="col-md-4">
+                        <li class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
                             
                             {% render_product product %}
                         </li>
