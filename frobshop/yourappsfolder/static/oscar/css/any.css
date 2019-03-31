@@ -3519,7 +3519,7 @@ html {
     list-style: none;
     font-size: 14px;
     text-align: left;
-    background-color: #fff;
+    background-color: #4bff00c7;
     border: 1px solid #ccc;
     border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 4px;
@@ -3536,6 +3536,16 @@ html {
     margin: 9px 0;
     overflow: hidden;
     background-color: #e5e5e5;
+  }
+  .blink_me{
+    background-color: gold;
+    animation: blinker 1s linear infinite;
+
+  }
+  @keyframes blinker {
+    50%{
+      opacity: 0;
+    }
   }
   .dropdown-menu > li > a {
     display: block;
@@ -4993,7 +5003,7 @@ html {
     padding: 4px;
     margin-bottom: 2px;
     line-height: 1.42857143;
-    background-color: #fff;
+    background-color: #e8dede38;
     border: 1px solid #ddd;
     border-radius: 4px;
     -webkit-transition: border 0.2s ease-in-out;
@@ -7912,7 +7922,7 @@ html {
     box-sizing: border-box;
   }
   .page .page_inner {
-    background: #fff;
+    background: #f7f5f58f;
     -webkit-border-radius: 0 0 6px 6px;
     -moz-border-radius: 0 0 6px 6px;
     border-radius: 0 0 6px 6px;

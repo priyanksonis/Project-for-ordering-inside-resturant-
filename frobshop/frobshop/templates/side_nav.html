@@ -1,0 +1,19 @@
+ <!--code for side nav bar-->
+ <div id="mySidenav" class="sidenav">
+    <center>
+        <h2 style="color:white;"><strong>My Cart</strong></h2>
+    </center>
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    
+        {% load currency_filters %}
+        {% load i18n %}
+
+        
+
+           
+            <li>{% include "basket/partials/basket_quick.html" %}</li>
+
+        
+
+    
+</div>
