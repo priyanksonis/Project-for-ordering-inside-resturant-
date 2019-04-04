@@ -7,11 +7,16 @@
 {% block product %}
     <article class="product_pod">
         {% block product_image %}
-            <div class="image_container">
+            <div class="">
                 {% with image=product.primary_image %}
-                    {% thumbnail image.original "x155" upscale=False as thumb %}
+                   <!-- {% thumbnail image.original "x155" upscale=False as thumb %}
                     <a href="{{ product.get_absolute_url }}"><img src="{{ thumb.url }}" alt="{{ product.get_title }}" class="thumbnail"></a>
-                    {% endthumbnail %}
+                    {% endthumbnail %}-->
+                    <a href="{{ product.get_absolute_url }}"><img src="{{ image.original.url }}" alt="{{ product.get_title }}" class="img thumbnail"></a>
+
+               
+        
+
                 {% endwith %}
             </div>
         {% endblock %}
@@ -27,13 +32,12 @@
                 </p>
             {% endiffeature %}
         {% endblock %}
-
         {% block product_title %}
-            <h3><a href="{{ product.get_absolute_url }}" title="{{ product.get_title }}">{{ product.get_title|truncatewords:4 }}</a></h3>
+            <h3 style="margin-top:1px;"><a href="{{ product.get_absolute_url }}" title="{{ product.get_title }}">{{ product.get_title|truncatewords:4 }}</a></h3>
         {% endblock %}
 
         {% block product_price %}
-            <div class="product_price">
+            <div class="" style="margin-bottom: -8px;">
                 {% include "catalogue/partials/stock_record.html" %}
                 {% if not product.is_parent and not product.has_options %}
                     {% include "catalogue/partials/add_to_basket_form_compact.html" %}

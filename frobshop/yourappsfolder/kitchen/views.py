@@ -20,8 +20,6 @@ from ..order.models import Order
 from oscar.apps.order.models import Line
 
 
-
-
 class KitchenBook(CreateView):
     """docstring for ClassName"""
     #queryset = Order.objects.all()
