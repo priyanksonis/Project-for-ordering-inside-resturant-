@@ -66,3 +66,173 @@
     
     </li>
 {% endfor %}
+
+
+
+
+
+<form method='POST'> {% csrf_token %}
+                {{ form }}
+                <button type='submit'>Save</button>
+            </form>
+
+
+
+
+
+
+            <form method='POST'>   {% csrf_token %}
+                <tr><th><label for="id_order_id">Order id:</label></th><td><input type="number" readonly name="order_id" required id="id_order_id" value=  {{ obj.id }} ></td></tr>
+                <tr><th><label for="id_chefname">Chefname:</label></th><td><input type="text" name="chefname" required maxlength="120" id="id_chefname"></td></tr>
+                <tr><th><label for="id_time">Time:</label></th><td><input type="text" name="time" required maxlength="120" id="id_time"></td></tr>
+                <button type='submit'>Save</button>
+            </form>
+
+
+
+
+
+
+
+
+{% for obj in object_list %}
+                <li> {{ obj }} 
+                    {{ obj.id }} <br> <br>{{ obj.date_placed }} {{ obj.category }} {{ obj.timestamp }} {{ obj.updated }}
+                </li>
+
+                {% for key,val in items_in_orders.items %}
+                    {% if obj.id == key %}
+                       {% for v in val %}
+                             <option value="{{v}}">{{v}}</option>
+                       {% endfor %}
+        
+                    {% endif %} 
+                {% endfor %}
+                </li>    
+            {% if form.errors %}
+                {{ form.errors }}
+            {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            {% for key,val in kitchen_orders_book.items %}
+                    {% if obj.id == key %}
+
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">ChefName</th>
+                          <th scope="col">Time</th>
+                        </tr>
+                      </thead>
+            
+                      <tbody>
+                       {% for v in val %}
+                             <tr>
+                                <th scope="row">{{forloop.counter}}</th>
+                                <td>{{v.chefname}}</td>
+                                <td>{{v.time}}</td>
+                            </tr>
+                       {% endfor %}
+                    </tbody>
+
+                    </table>
+                    
+        
+                    {% endif %} 
+            {% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <form method='POST'>   {% csrf_token %}
+                <tr><th><label for="id_order_id">Order id:</label></th><td><input type="number" readonly name="order_id" required id="id_order_id" value=  {{ obj.id }} ></td></tr>
+                <tr><th><label for="id_chefname">Chefname:</label></th><td><input type="text" name="chefname" required maxlength="120" id="id_chefname"></td></tr>
+                <tr><th><label for="id_time">Time:</label></th><td><input type="text" name="time" required maxlength="120" id="id_time"></td></tr>
+                <button type='submit'>Save</button>
+            </form>
+
+            
+            {% for key,val in kitchen_orders_book.items %}
+                    {% if obj.id == key %}
+
+
+
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">ChefName</th>
+                          <th scope="col">Time</th>
+                        </tr>
+                      </thead>
+            
+                      <tbody>
+
+                       {% for v in val %}
+                             <tr>
+                                <th scope="row">{{forloop.counter}}</th>
+                                <td>{{v.chefname}}</td>
+                                <td>{{v.time}}</td>
+                            </tr>
+                       {% endfor %}
+                    </tbody>
+
+                    </table>
+                    
+        
+                    {% endif %} 
+            {% endfor %}
+

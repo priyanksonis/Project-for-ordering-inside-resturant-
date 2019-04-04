@@ -1,46 +1,52 @@
 #from django.shortcuts import render
 
 # Create your views here.
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render
 from django.views import View
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView ,CreateView ,ListView ,UpdateView ,DetailView
+from django.views.generic.edit import BaseCreateView,  TemplateResponseMixin
+from django.views.generic.list import BaseListView
 
 #from .models import RestaurantLocation
 
 
-from oscar.apps.order.models import Order
+
+from .forms import KitchenBookForm
+from .models import KitchenOrderBook
+
+#rom oscar.apps.order.models import Order
+from ..order.models import Order
 from oscar.apps.order.models import Line
 
 
-def orders_listview(request):
+class KitchenBook(CreateView):
+    """docstring for ClassName"""
+    #queryset = Order.objects.all()
+
+    order_obj = Order.objects.all()
     template_name = 'kitchen/orders.html'
-    queryset = Order.objects.all()
-
-    print("priyank")
-
-    queryset_items=Line.objects.filter(order_id=13)
-
-
-    item={}
-
-    for an_order in queryset:
-    	item[an_order.id]= Line.objects.filter(order_id=an_order.id)
-
     
+    
+    success_url="/orders_in_kitchen/"
+    form_class = KitchenBookForm
+    ####
+    print("priyank")
+    def get_context_data(self, **kwargs):
+        order_obj = Order.objects.all()
+        item={}
+        row_in_KitchenOrderBook_table={}
+        for an_order in order_obj:
+            item[an_order.id]= Line.objects.filter(order_id=an_order.id)
+            row_in_KitchenOrderBook_table[an_order.id]=KitchenOrderBook.objects.filter(order_id = an_order.id)
 
-    #list of items in a order
-    #import pdb
-    #pdb.set_trace()
+        context = super(KitchenBook, self).get_context_data(**kwargs)
+        context["object_list"] = order_obj
+        context["items_in_orders"] = item
+        context["kitchen_orders_book"] = row_in_KitchenOrderBook_table
 
 
-    for i in item:
-    	print(i)
+        #import pdb
+        #pdb.set_trace()
+        return context
 
-    context = {
-        "object_list": queryset,
-        "items_in_orders":item,
-    }
-    #import pdb
-    #pdb.set_trace()
-    return render(request, template_name, context)

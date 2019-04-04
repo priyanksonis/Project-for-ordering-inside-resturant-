@@ -36,7 +36,7 @@ from frobshop.app import application as shop
 from django.conf.urls import url, include
 
 
-from yourappsfolder.kitchen.views import orders_listview
+from yourappsfolder.kitchen import views
 
 
 
@@ -54,7 +54,24 @@ urlpatterns = [
     #path('', application.urls),  # > Django-2.0
     url(r'', shop.urls),
 
-    url(r'^orders_in_kitchen/$', orders_listview),
+    url(r'^orders_in_kitchen/$', views.KitchenBook.as_view()),
+    #path(r'^orders_in_kitchen_new/$', views.KitchenBook.as_view(), name='kitchen_book'),
+    #url(r'^orders_in_kitchen_new/$', views.KitchenBook.as_view()),
+    #url(r'^orders_in_kitchen_new/$', views.Index.as_view()),
+    #url(r'^orders_in_kitchen_new1/$', views.KitchenBook1.as_view()),
+
+    #url(r'^orders_in_kitchen_new_final/$', views.KitchenBook2.as_view()),
+
+    #url(r'^orders_in_kitchen/$', views.Index.as_view(), name='index'),
+
+    #path(r'^orders_in_kitchen/$', views.Index.as_view(), name='index'),
+
+    #path('orders_in_kitchen/', include('yourappsfolder.kitchen.urls')),
+
+    #path('admin_1/', admin.site.urls),
+    #path('accounts/', include('yourappsfolder.accounts.urls')),
+    #path('accounts/', include('django.contrib.auth.urls')),
+    #path('1/', include('yourappsfolder.kitchen.urls')),
 ]
 
 

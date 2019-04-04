@@ -111,4 +111,50 @@ lecture 27
 https://www.udemy.com/try-django-v1-11-python-web-development/learn/v4/t/lecture/7606866?start=330
 
 
-18. 
+18. Associating a user to form data in function based view
+lec. 29
+https://www.udemy.com/try-django-v1-11-python-web-development/learn/v4/t/lecture/7606870?start=0
+
+19. Associating a user to form data in class based view
+lec. 30
+https://www.udemy.com/try-django-v1-11-python-web-development/learn/v4/t/lecture/7606872?start=0
+
+20. login is required to view
+lec. 31
+
+
+21.using django's LoginView
+user is required to be logged in for creating a restaurent
+lec. 32  (LoginRequiredMixin)
+
+22. use url short pattern inside a template (like {% url "abcd" %}) or (using reverse to short urls)
+-If we want to make an app reusable, the app should have its own urls.py and in our proejct's urlpattern in urls.py that can be included.
+lec. 33
+
+
+23. restrict some fields in form (so that only that options will come), 
+updating a form
+
+
+
+hint:: this can be used for prepopulating order id in the form in kitchen
+lec. 36
+
+24. Personalize items:
+so that an user can see his things
+lec: 37
+
+
+25. user profile view
+using this in detail view::
+return get_object_or_404(User, username__iexact=username, is_active=True)
+lec. 38
+
+26. Addin somebootstrap to profile
+lec. 39
+
+27. Adding a robust search
+lec. 40
+
+28. chirag teamviewer id (this is added in priyank_ranch_extra new hai yee)
+1213137995
