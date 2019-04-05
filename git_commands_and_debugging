@@ -1,0 +1,82 @@
+git remote -v (for cheking upstream and origin)
+
+
+git branch  (in my master)
+
+git pull  upstream newdesign_joao_english   (taking pull of rated:master) 
+
+git checkout -b login (go to login branch,     if not there -b will create)
+
+
+git add .
+
+git commit -m"wip"
+
+git push origin login  (after work )
+
+
+
+*********************************************************
+*********************************************
+git remote -v
+
+
+git branch --track newdesign upstream/newdesign_joao_english   
+
+git checkout newdesign (newdesign is my copy of newdesign_joao_english )
+
+
+***********************************************************
+************use this***************************************
+
+git pull upstream newdesign_joao_english
+
+git checkout -b login_store_pwd
+
+git branch
+
+**************************************************************
+****************************************************************
+
+
+
+
+for staging:
+/home/priyank/google_appengine/appcfg.py update /home/priyank/ratedapartments/server
+
+
+for local: 
+cd google_appengine
+./dev_appserver.py  /home/priyank/ratedapartments/server/app.yaml
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**************************************************************
+**************************************************************
+debugging:
+
+from inspect import currentframe, getframeinfo
+frameinfo = getframeinfo(currentframe())
+print frameinfo.filename, frameinfo.lineno
+
+
+
+
+
+
+
+
+***************************4/4/19******************
+
+git branch::   shows all local brances and also shows your current local branch
