@@ -1,168 +1,47 @@
 {% extends "layout.html" %}
 {% load promotion_tags %}
-{% load category_tags %}
-{% load product_tags %}
-{% load i18n %}
-{% load static %}
 
 {% comment %}
 Keep the same header and footer as the standard layout template but override the 
 main content area to split it into a sidebar and a content block
 {% endcomment %}
 {% block content_wrapper %}
+<div class="container-fluid page">
+    <div class="page_inner">
+        {% block breadcrumbs %}{% endblock %}
+        
 
+        <div class="row">
 
-
-
-
-
-
-<div class="container-fluid">
-    <div class="row">
-        <!--start of new side bar-->
-        <div class="col-sm-2 sidebar1">
-                <div class="logo">
-                                    <img src={% static "oscar/img/restaurant_icon.png" %} class="img-responsive center-block" alt="Logo">
-                                </div>
-                                <br>
-                                <div class="left-navigation">
-                                    <ul class="list">
-                                        <h5><strong>WHEREABOUTS</strong></h5>
-                                        {% category_tree as tree_categories %}
-    
-                                        {% if tree_categories %}
-                                            
-                                                    {% for tree_category, info in tree_categories %}
-                                        <li>
-                                                <a href="{{ tree_category.get_absolute_url }}" role="button">
-                                                        {% if tree_category.pk == category.pk %}
-                                                            <strong>{{ tree_category.name }}</strong>
-                                                        {% else %}
-                                                            {{ tree_category.name }}
-                                                        {% endif %}
-                                                    </a>
-                                                 
-                                        </li>
-                                        <!--<li>Office</li>
-                                        <li>School</li>
-                                        <li>Gym</li>
-                                        <li>Art Class</li>
-                                        <li>Hike Club</li>-->
-                                        {% if info.has_children %}<{% else %} {% endif %}
-                                        {% for n in info.num_to_close %}
-                            
-                                            
-                                        {% endfor %}
-                                {% endfor %}
-                            
-                            </ul>
-                    {% endif %}
-                    
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                    {% if has_facets %}
-                        <h4>{% trans "Refine by" %}</h4>
-                        <div class="side_categories">
-                            {% for field, data in facet_data.items %}
-                                {% if data.results %}
-                                    {% include 'search/partials/facet.html' with name=data.name items=data.results %}
-                                {% endif %}
-                            {% endfor %}
-                        </div>
-                    {% endif %}
-                                   
-                
-                                    <br>
-                
-                                   <!-- <ul class="list">
-                                        <h5><strong>HOBBIES</strong></h5>
-                                        <li>Hiking</li>
-                                        <li>Rafting</li>
-                                        <li>Badminton</li>
-                                        <li>Tennis</li>
-                                        <li>Sketching</li>
-                                        <li>Horse Riding</li>
-                                    </ul>-->
-                                </div>
-                           
+            <aside class="sidebar col-sm-4 col-md-3">
+                {# Render promotions at the top of the left-hand sidebar #}
+                <div id="promotions_left">
+                    {% for promotion in promotions_left %}
+                        {% render_promotion promotion %}
+                    {% endfor %}
                 </div>
-        <!--end of new side bar-->
-        <div class="col-sm-10">
+                {% block column_left %}{% endblock %}
+            </aside>
 
+            <div class="col-sm-8 col-md-9">
+                {% block header %}
+                <div class="page-header action">
+                    <h1>{% block headertext %}{% endblock %}</h1>
+                </div>
+                {% endblock %}
 
-            <div class="">
-                <div class="page_inner">
-                    {% block breadcrumbs %}{% endblock %}
-                    
-                    <div class="row">
+                {% include "partials/alert_messages.html" %}
 
+                <div id="promotions">
+                    {% for promotion in promotions_page %}
+                        {% render_promotion promotion %}
+                    {% endfor %}
+                </div>
 
-                        {# Render promotions at the top of the left-hand sidebar #}
-                        <div id="promotions_left">
-                            {% for promotion in promotions_left %}
-                            {% render_promotion promotion %}
-                            {% endfor %}
-                        </div>
+                {% block content %}{% endblock %}
+            </div>
 
-                        {% block column_left %}{% endblock %}
-
-                        <div class="col-sm-12 col-md-12">
-                            {% block header %}
-                            <div class="page-header action">
-                                <h1>{% block headertext %}{% endblock %}</h1>
-                            </div>
-                            {% endblock %}
-
-                            
-
-                            <div id="promotions">
-                                {% for promotion in promotions_page %}
-                                {% render_promotion promotion %}
-                                {% endfor %}
-                            </div>
-
-                            {% block content %}{% endblock %}
-                        </div>
-
-                    </div><!-- /row -->
-                </div><!-- /page_inner -->
-            </div><!-- /container-fluid -->
-        </div>
-        <!--code for side nav bar-->
-        <div id="mySidenav" class="sidenav">
-            <center>
-                <h2 style="color:white;"><strong>My Cart</strong></h2>
-            </center>
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            
-                {% load currency_filters %}
-                {% load i18n %}
-
-                
-
-                   
-                    <li>{% include "basket/partials/basket_quick.html" %}</li>
-
-                
-
-            
-        </div>
-
-
-    </div>
-</div>
-
-
-
-
-
+        </div><!-- /row -->
+    </div><!-- /page_inner -->
+</div><!-- /container-fluid -->
 {% endblock %}

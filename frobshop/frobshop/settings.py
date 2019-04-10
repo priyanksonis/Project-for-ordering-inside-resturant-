@@ -208,3 +208,7 @@ MEDIA_URL = '/media/'
 #this line is added to remove connection error (which is caused when we were trying to send email)
 #link to post:::::    https://stackoverflow.com/questions/5802189/django-errno-111-connection-refused
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' 
+
+
+# import pdb;
+# pdb.set_trace()

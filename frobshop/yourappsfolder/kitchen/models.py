@@ -18,3 +18,4 @@ class KitchenOrderBook(models.Model):
     def title(self):
         return self.chefname
 
+
