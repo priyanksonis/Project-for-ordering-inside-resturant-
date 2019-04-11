@@ -153,3 +153,12 @@ $git remote prune origin
 
 
 !!!!!DONE, thanks!!!!!
+
+
+
+****************************************************************************************	*
+***********************************************************************************
+
+to replace(not merge) code in oldbranch with code in newbranch
+
+git push origin +newBranch:oldBranch
