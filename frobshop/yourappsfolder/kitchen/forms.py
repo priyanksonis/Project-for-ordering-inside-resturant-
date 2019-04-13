@@ -12,8 +12,7 @@ class KitchenBookForm(forms.ModelForm):
 	        fields = [
 	        	'order_id',
 	        	'order_number',
-	        	'fname_of_orderer',
-	            'chefname',
+	        	'chefname',
 	            'time',
 	        ]
 	        def clean_name(self):

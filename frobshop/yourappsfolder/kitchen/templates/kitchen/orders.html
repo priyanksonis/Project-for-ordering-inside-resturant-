@@ -51,8 +51,9 @@
   <table class="table table-light table-bordered table-striped "> 
     <thead class="alert-primary">
         <tr>
-          <th>Sr.No</th>
             <th>TableId</th>
+            <th>Order No.</th>
+
             <th>Date</th>
             <th>Item</th>
             <th>Quantity</th>
@@ -65,7 +66,24 @@
                
             {% for obj in object_list %}
                   <tr>
-                    <td>{{ obj.id }}</td>
+
+
+                  <td>
+                    {% for key1,val1 in f_name_of_orderer.items %}
+                        {% if obj.id == key1 %}
+
+                          {% for v in val1 %}
+           <!--  <option value="{{v}}">{{v.title}}</option>-->
+                           {{v}}
+                            {% endfor %}      
+                           
+                           
+                        {% endif %}   
+                      {% endfor %}
+
+                    </td>
+
+                    
                     <td>{{ obj }} </td>
                     <td>{{ obj.date_placed }}{{ obj.timestamp }}{{ obj.category }}{{ obj.updated }}</td>
                     <td>
@@ -108,6 +126,7 @@
                      {% for key,val in kitchen_orders_book.items %}
                     {% if obj.id == key %}
 
+                      
 
 
                     <table class="table">
@@ -142,9 +161,6 @@
                     <BR>
                   
                     <label for="id_order_number">Order number:&nbsp;</label><input type="number" readonly name="order_number" required id="id_order_number" value={{ obj.number }} >
-
-
-                    <label for="id_fname_of_orderer">Table-Name:</label><input type="text" name="chefname" required maxlength="20" id="id_fname_of_orderer" value={{ obj.number }}> <br>
                                     
 
                     <label for="id_chefname">Chef-Name:</label><input type="text" name="chefname" required maxlength="20" id="id_chefname"> <br>
