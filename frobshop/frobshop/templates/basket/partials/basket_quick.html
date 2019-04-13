@@ -54,4 +54,9 @@
     {% else %}
         <li><p style="color:white;">{% trans "Your basket is empty add some items." %}</p></li>
     {% endif %}
+
+    {% for key,val in ord_id_KitchenOrderBook.items%}
+        &emsp; <h> Order No.: {{val.order_number}} </h> &emsp; <h>time(mins.): {{val.time}} </h><br>
+    {% endfor %}
+
 </ul>
