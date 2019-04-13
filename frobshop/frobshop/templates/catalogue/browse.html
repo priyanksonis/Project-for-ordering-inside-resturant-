@@ -15,7 +15,11 @@
     {% category_tree as tree_categories %}
     
     {% if tree_categories %}
-        <div class="side_categories">
+    <p class="btn btn-success">categories</p>
+
+        <div class="side_categories" style="padding:0px;background-color:white;margin-left: 95px;margin-top: -35px;border: 0px">
+                <marquee style="  scrollamount="6" scrolldelay="90" direction="left" onmouseover="this.stop()" onmouseout="this.start()">
+
                 {% for tree_category, info in tree_categories %}
                     
 
@@ -27,7 +31,6 @@
                                 {{ tree_category.name }}
                             {% endif %}
                         </a>
-                     
 
                         {% if info.has_children %}<{% else %} {% endif %}
                         {% for n in info.num_to_close %}
@@ -35,6 +38,7 @@
                             
                         {% endfor %}
                 {% endfor %}
+                    </marquee>
             
         </div>
     {% endif %}
