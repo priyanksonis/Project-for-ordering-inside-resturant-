@@ -5,7 +5,6 @@ from django.db import models
 class KitchenOrderBook(models.Model):
     order_id        = models.IntegerField()
     order_number    = models.IntegerField()                                                  #this will e same as id field in order table
-    fname_of_orderer= models.CharField(max_length=120,default="")
     chefname        = models.CharField(max_length=120)
     time            = models.CharField(max_length=50)
     #time            = models.IntegerField(max_length=120)

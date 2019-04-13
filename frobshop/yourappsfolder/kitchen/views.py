@@ -41,13 +41,21 @@ class KitchenBook(CreateView):
 
         f_name_dict={}
         user_id={}
+        f_name={}
 
         for an_order in order_obj:
             item[an_order.id]= Line.objects.filter(order_id=an_order.id)
             row_in_KitchenOrderBook_table[an_order.id]=KitchenOrderBook.objects.filter(order_id = an_order.id)
             user_id_val=Order.objects.filter(id=an_order.id).values_list('user_id')[0][0]
-            #f_name_=UserAddress.objects.filter(user_id=user_id_val).values_list('first_name')[0][0]
-
+            print(user_id_val)
+            f_name_=UserAddress.objects.filter(user_id=user_id_val).values_list('first_name')[0][0] if len(UserAddress.objects.filter(user_id=user_id_val).values_list('first_name')[0])!=0 else ""
+            f_name[an_order.id]=f_name_
+            print(f_name_)
+            # if f_name_:
+            #     a=1
+                
+            # else:
+            #     f_name_.append('x')
 
 
             #import pdb
@@ -57,7 +65,7 @@ class KitchenBook(CreateView):
         context["object_list"] = order_obj
         context["items_in_orders"] = item
         context["kitchen_orders_book"] = row_in_KitchenOrderBook_table
-        context["f_name_of_orderer"]=f_name_dict
+        context["f_name_of_orderer"]=f_name
 
         #import pdb
         #pdb.set_trace()
