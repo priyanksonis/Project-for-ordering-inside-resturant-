@@ -7,23 +7,36 @@
 
 <ul class="basket-mini-item list-unstyled">
     {% if request.basket.num_lines %}
-        {% for line in request.basket.all_lines %}
+        {% for line in request.basket.all_lines reversed%}<!--chiarag 13-04-2019-->
             <li>
                 <div class="row">
-                    <div class="col-md-3">
-                        <div class="">
+                    <div class="col-md-4">
+                    
                             {% with image=line.product.primary_image %}
                                 {% thumbnail image.original "100x100" upscale=False as thumb %}
-                                <a href="{{ line.product.get_absolute_url }}"><img class="thumbnail cartelementleftmargin" src="{{ thumb.url }}" alt="{{ line.product.get_title }}"></a>
+                                <a href="{{ line.product.get_absolute_url }}"><img class="thumbnail cartelementleftmargin" src="{{ thumb.url }}" alt="{{ line.product.get_title }}" style="width: -webkit-fill-available;height: 65px;"></a>
                                 {% endthumbnail %}
                             {% endwith %}
+                        
+                    </div>
+                    <!--chirag 12-04-19 -->
+                    <div class="col-md-8">
+                        <div class="row">
+                        <div class="col-md-12" style="padding-left: 15px;">
+                                            <p style="margin-left: px;white-space: nowrap;"><strong><a style="color: white;white-space: nowrap;" href="http://127.0.0.1:8000/catalog/dal-bati_16/">{{ line.description }}</a></strong></p>
+                                        </div>
+                        </div>
+                            <div class="row" style="">
+                        <div class="col-md-4 align-center cartelementleftmargin" style="/* padding-top:10px; */color: white;/* margin-left: 90px; */padding-left: 15px;text-align:unset;"><strong>{% trans "Qty" %}</strong> {{ line.quantity }}</div>
+                                <div class="col-md-2 price_color align-right cartelementleftmargin" style="/*padding-left: 25px;*/color: gold;/* padding-top: 10px; */padding-right: 0px;">{{ line.unit_price_excl_tax|currency:request.basket.currency }}</div>
+                                
                         </div>
                     </div>
-                    <div class="col-md-5">
+                    <!--<div class="col-md-5">
                         <p style="margin-left:0px;"><strong><a style="color: white;" href="{{ line.product.get_absolute_url }}">{{ line.description }}</a></strong></p>
-                    </div>
-                    <div class="col-md-2 align-center cartelementleftmargin" style="padding-top:10px;color: white;"><strong>{% trans "Qty" %}</strong> {{ line.quantity }}</div>
-                    <div class="col-md-2 price_color align-right cartelementleftmargin" style="padding-left:25px; padding-top: 10px;">{{ line.unit_price_excl_tax|currency:request.basket.currency }}</div>
+                    </div>-->
+                   <!-- <div class="col-md-2 align-center cartelementleftmargin" style="padding-top:10px;color: white;"><strong>{% trans "Qty" %}</strong> {{ line.quantity }}</div>
+                    <div class="col-md-2 price_color align-right cartelementleftmargin" style="padding-left:25px; padding-top: 10px;">{{ line.unit_price_excl_tax|currency:request.basket.currency }}</div>-->
                 </div>
             </li>
         {% endfor %}
