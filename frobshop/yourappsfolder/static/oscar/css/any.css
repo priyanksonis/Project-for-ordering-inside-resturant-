@@ -1083,7 +1083,7 @@ html {
     line-height: inherit;
   }
   a {
-    color: #fff;
+    color: #000;
     text-decoration: none;
   }
   a:hover,
@@ -5819,6 +5819,7 @@ html {
     padding-bottom: 75%;
   }
   .well {
+    text-align: center;
     min-height: 20px;
     padding: 19px;
     margin-bottom: 20px;
@@ -8628,7 +8629,7 @@ html {
   .choose-block .btn-success {
     position: absolute;
     bottom: 30px;
-    left: 30px;
+    left: 500px;
   }
   .choose-block .address-controls {
     position: absolute;
@@ -9125,3 +9126,4 @@ margin-top: -20px;
 }.main-content{
 text-align:center;
 }
+

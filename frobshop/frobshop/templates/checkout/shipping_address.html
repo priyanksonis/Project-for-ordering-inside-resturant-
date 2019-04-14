@@ -14,6 +14,8 @@
 {% block order_contents %}{% endblock %}
 
 {% block shipping_address %}
+
+
 <div class="col-sm-12">
     <div class="sub-header">
         <!-- <h2>{% trans "Where should we ship to?" %}</h2> -->
@@ -25,7 +27,12 @@
                 <div class="row">
                     {% for address in addresses %}
                         {% block select_address_form %}
-                            <div class="col-sm-6">
+                            
+
+                            <div class="col-sm-12">
+
+                            
+
                                 <div class="well">
                                     <address>
                                         {% block select_address_fields %}
@@ -38,18 +45,22 @@
                                         {% csrf_token %}
                                         <input type="hidden" name="action" value="ship_to" />
                                         <input type="hidden" name="address_id" value="{{ address.id }}" />
+
+
+                                        
+
                                         {% if address.is_default_for_shipping %}
                                             <!-- <button type="submit" class="btn btn-success btn-large ship-address" data-loading-text="{% trans 'Saving...' %}"><i class="icon-ok"></i> {% trans "Ship to your default shipping address" %}</button>
  -->
 
                                             <button type="submit" class="btn btn-success btn-large ship-address" data-loading-text="{% trans 'Saving...' %}"><i class="icon-ok"></i> {% trans "Ship this order to given table" %}</button>
 
-
+                                            
                                         {% else %}
 
 
                                         <!--     <button type="submit" class="btn btn-primary btn-large ship-address" data-loading-text="{% trans 'Saving...' %}">{% trans "Ship to this address" %}</button> -->
-                                        
+                                        &emsp;&emsp;&emsp;&emsp;
                                         <button type="submit" class="btn btn-primary btn-large ship-address" data-loading-text="{% trans 'Saving...' %}">{% trans "Ship this order to given table" %}</button>
 
                                         {% endif %}
@@ -67,7 +78,10 @@
 
                                     </form>
                                 </div>
+
+                                
                             </div>
+
                             {% if forloop.counter|divisibleby:2 %}
                                 </div><div class="row">
                             {% endif %}
