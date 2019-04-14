@@ -9,7 +9,7 @@
     {% include 'checkout/nav.html' with step=1 %}
 {% endblock %}
 
-{% block checkout_title %}{% trans "Shipping address" %}{% endblock %}
+{% block checkout_title %}  <center>{% trans "Shipping address" %} </center>{% endblock %}
 
 {% block order_contents %}{% endblock %}
 
@@ -47,7 +47,7 @@
                                         <input type="hidden" name="address_id" value="{{ address.id }}" />
 
 
-                                        
+
 
                                         {% if address.is_default_for_shipping %}
                                             <!-- <button type="submit" class="btn btn-success btn-large ship-address" data-loading-text="{% trans 'Saving...' %}"><i class="icon-ok"></i> {% trans "Ship to your default shipping address" %}</button>
@@ -55,7 +55,7 @@
 
                                             <button type="submit" class="btn btn-success btn-large ship-address" data-loading-text="{% trans 'Saving...' %}"><i class="icon-ok"></i> {% trans "Ship this order to given table" %}</button>
 
-                                            
+
                                         {% else %}
 
 
