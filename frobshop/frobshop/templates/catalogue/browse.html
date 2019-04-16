@@ -17,18 +17,18 @@
     {% if tree_categories %}
     <p class="btn btn-success">categories</p>
 
-        <div class="side_categories" style="padding:0px;background-color:white;margin-left: 95px;margin-top: -35px;border: 0px">
+        <div class="side_categories" style="padding:0px;background-color:white;margin-left: 95px;margin-top: -50px;border: 0px">
                 <marquee style="  scrollamount="6" scrolldelay="90" direction="left" onmouseover="this.stop()" onmouseout="this.start()">
 
                 {% for tree_category, info in tree_categories %}
                     
 
-                    
-                        <a href="{{ tree_category.get_absolute_url }}" class="btn btn-info" role="button">
+                    <!--chirag 14-04-19-->
+                        <a href="{{ tree_category.get_absolute_url }}" class="btn btn-info" role="button" style="background-color:black;">
                             {% if tree_category.pk == category.pk %}
                                 <strong>{{ tree_category.name }}</strong>
                             {% else %}
-                                {{ tree_category.name }}
+                                <strong>{{ tree_category.name }}</strong>
                             {% endif %}
                         </a>
 
@@ -101,7 +101,7 @@
             <div>
                 <ol class="row">
                     {% for product in products %}
-                              <li class="col-xs-6 col-sm-4 col-md-3 col-lg-3">{% render_product product %}</li>
+                              <li class="col-xs-6 col-sm-3 col-md-3 col-lg-3">{% render_product product %}</li>
                     {% endfor %}
                         <!--    
                     {% for key,val in ord_id_KitchenOrderBook.items%}

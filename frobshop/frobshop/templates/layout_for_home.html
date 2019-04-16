@@ -1,6 +1,9 @@
 {% extends "layout_2_col.html" %}
 {% load promotion_tags %}
-
+<!--chirag 14-04-19-->
+{% load currency_filters %}
+{% load category_tags %}
+{% load i18n %}
 
 
 {% comment %}
@@ -11,20 +14,7 @@ main content area to split it into a sidebar and a content block
 
 {% block navigation_and_upper%}
 
-        {# Top-horizontal bar with account, notifictions, dashboard links #}
-       
-       {% include "partials/nav_accounts.html" %}
-        {# Site logo/title, mini-basket, browse dropdown and searchbox #}
         
-        
-        <center><p style="font-size:50px;">TAJ</p></center>
-
-
-        <header class="header container-fluid">
-            {% block navigation %}
-                {% include "partials/nav_primary.html" %}
-            {% endblock %}
-        </header>
 {% endblock %}
 
 
@@ -32,12 +22,90 @@ main content area to split it into a sidebar and a content block
 
 {% block content_wrapper %}
 
-<div class="container-fluid">
+<div class="container-fluid" style="border:2px solid black;">
   <div class="row">
                           <!--chirag 12-04-19 -->
-    <div class="col-sm-9" style="background-color:lavender;">
-        
-            <div class="container-fluid page">
+    <div class="col-sm-9 col-md-9" style="background-color:white;">
+        <!--chirag 14-01-19-->
+        <div class="row"><div class="col-sm-12 col-md-12" style="
+            text-align: center;
+            margin-bottom: -40px;
+        "><strong><h1>HOTEL TAJ</h1></strong>
+                </div><!--end of HOTEL TAJ column -->
+            </div><hr>
+            <!--start of row having browse button and product search form-->
+            <div class="row" style="
+    margin-top: -18px;
+    margin-bottom: -15px;
+">
+    <!-- space for browse button and search product-->
+<div class="col-sm-6 col-md-6" style="
+    padding-left: 20px;
+">          
+                       {% block nav_dropdown %}
+            <ul id="browse" class="nav navbar-nav" style="background-color: blue;border-radius: 25px;">
+                    <li class="dropdown active {% if expand_dropdown %}open{% endif %}">
+                            <a href="#" class="dropdown-toggle" {% if not expand_dropdown %} data-toggle="dropdown"{% endif %} style="padding-top: 7px;padding-bottom: 15px;"><strong>
+                                    {% trans "Browse store" %}
+                                    <b class="caret"></b></strong>
+                        </a>
+                        <ul class="dropdown-menu" data-navigation="dropdown-menu">
+                                {% category_tree depth=2 as tree_categories %}
+                                <li><a tabindex="-1" href="{% url 'catalogue:index' %}">{% trans "All products" %}</a></li>
+                                {% if tree_categories %}
+                                    <li class="divider"></li>
+                                    {% for tree_category, info in tree_categories %}
+                                        {% if info.has_children %}
+                                            <li class="dropdown-submenu">
+                                                <a tabindex="-1" href="{{ tree_category.get_absolute_url }}">{{ tree_category.name }}</a>
+                                                <ul class="dropdown-menu">
+                                                {% else %}
+                                                    <li><a tabindex="-1" href="{{ tree_category.get_absolute_url }}">{{ tree_category.name }}</a></li>
+                                                {% endif %}
+    
+                                                {% for close in info.num_to_close %}
+                                                    </ul></li>
+                                                {% endfor %}
+                                    {% endfor %}
+                                {% endif %}
+                                <li class="divider"></li>
+                                {% block nav_dropdown_extra_items %}
+                                    <li><a href="{% url 'offer:list' %}">{% trans "Offers" %}</a></li>
+                                {% endblock %}
+                            </ul>
+
+                    </li>
+                     {% block nav_extra %}
+                    {% endblock %}
+                    
+                </ul>
+                {% endblock %}
+
+        </div>
+<!-- space for browse button and search product ends here --> 
+        <div class="col-sm-6 col-md-6" style="
+">
+            <form method="get" action="{% url 'search:search' %}" class="form-inline" style="
+    background-color: blue;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    /* margin-top: 0px; */
+    padding-left: 15px;
+    padding-right: 2px;
+    border-radius: 25px;
+    float: right;
+">
+    <div class="form-group">
+            {{ search_form.q }}
+        </div>
+        <input type="submit" value="{% trans "Search" %}" class="btn btn-default" />
+&nbsp;&nbsp;&nbsp;
+
+</form>
+ 
+        </div>
+    </div><!--end of row having browse button and product search form-->
+            <div class=""><!--chirag 14-04-19-->
                 <div class="page_inner">
                     {% block breadcrumbs %}{% endblock %}
                     
@@ -54,7 +122,7 @@ main content area to split it into a sidebar and a content block
                             
                             {% block column_left %}{% endblock %}
                         
-                            <div class="col-sm-8 col-md-12">
+                            <div class="col-sm-12 col-md-12">
                             {% block header %}
                             <div class="page-header action">
                                 <h1>{% block headertext %}{% endblock %}</h1>
@@ -77,12 +145,12 @@ main content area to split it into a sidebar and a content block
             </div><!-- /container-fluid -->
     </div>
                         <!--chirag 12-04-19 -->
-    <div class="col-sm-3" style="background-color:#5cb85c;">
+    <div class="col-sm-3 col-md-3 col-xs-12" style="background-color:#5cb85c;color: black;">
         {% load currency_filters %}
         {% load i18n %}
-        <div class="basket-mini pull-right hidden-xs">
-            <center><h2>My Cart</h2></center>
-            <li>{% include "basket/partials/basket_quick.html" %}</li>    
+        <div class="col-xs-12 basket-mini pull-right" style="background-color:#5cb85c;color: black;">
+        <center style="margin-bottom: -11px;"><h2>My Cart</h2></center><hr>
+            <li  style="margin-top:-30px;">{% include "basket/partials/basket_quick.html" %}</li>    
         </div>
     </div>
   </div>

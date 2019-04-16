@@ -10,7 +10,7 @@
         {% for line in request.basket.all_lines reversed%}<!--chiarag 13-04-2019-->
             <li>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-4 col-sm-4 col-xs-4">
                     
                             {% with image=line.product.primary_image %}
                                 {% thumbnail image.original "100x100" upscale=False as thumb %}
@@ -20,15 +20,15 @@
                         
                     </div>
                     <!--chirag 12-04-19 -->
-                    <div class="col-md-8">
+                    <div class="col-md-8 col-sm-8 col-xs-8">
                         <div class="row">
-                        <div class="col-md-12" style="padding-left: 15px;">
-                                            <p style="margin-left: px;white-space: nowrap;"><strong><a style="color: white;white-space: nowrap;" href="http://127.0.0.1:8000/catalog/dal-bati_16/">{{ line.description }}</a></strong></p>
+                        <div class="col-md-12 col-sm-12 col-xs-12" style="padding-left: 15px;">
+                                            <p style="margin-left: px;white-space: nowrap;"><strong><a style="color: white;white-space: nowrap;" href="{{ line.product.get_absolute_url }}">{{ line.description }}</a></strong></p>
                                         </div>
                         </div>
                             <div class="row" style="">
-                        <div class="col-md-4 align-center cartelementleftmargin" style="/* padding-top:10px; */color: white;/* margin-left: 90px; */padding-left: 15px;text-align:unset;"><strong>{% trans "Qty" %}</strong> {{ line.quantity }}</div>
-                                <div class="col-md-2 price_color align-right cartelementleftmargin" style="/*padding-left: 25px;*/color: gold;/* padding-top: 10px; */padding-right: 0px;">{{ line.unit_price_excl_tax|currency:request.basket.currency }}</div>
+                        <div class="col-md-4 col-sm-4 col-xs-4 align-center cartelementleftmargin" style="/* padding-top:10px; */color: white;/* margin-left: 90px; */padding-left: 15px;white-space:nowrap;text-align:unset;"><strong>{% trans "Qty" %}</strong> {{ line.quantity }}</div>
+                                <div class="col-md-2 col-sm-2 col-xs-2 price_color align-right cartelementleftmargin" style="padding-left: 20px;color: gold;/* padding-top: 10px; */padding-right: 0px;">{{ line.unit_price_excl_tax|currency:request.basket.currency }}</div>
                                 
                         </div>
                     </div>
@@ -54,9 +54,45 @@
     {% else %}
         <li><p style="color:white;">{% trans "Your basket is empty add some items." %}</p></li>
     {% endif %}
-
     {% for key,val in ord_id_KitchenOrderBook.items%}
-        &emsp; <h> Order No.: {{val.order_number}} </h> &emsp; <h>time(mins.): {{val.time}} </h><br>
-    {% endfor %}
+    <div class="row orderData">
+        <div class="col-md-6 col-sm-6 col-xs-6" style="
+        white-space: nowrap;
+        padding-left: 20px;
+        "><h> Order No.: {{val.order_number}} </h></div>
+        <div class="col-md-6 col-sm-6 col-xs-6" style="
+        padding-left: 50px;
+        white-space: nowrap;
+    "><h>time(mins.): {{val.time}} </h></div>
+        
+    </div>
+        {% endfor %}
+     
 
 </ul>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+        $(document).ready(function() {
+          setInterval(ajaxd, 10000);
+      });
+      function ajaxd() { 
+        
+$.ajax({
+type: "GET",
+url: "/",
+data: "",
+success: function(ord_id_KitchenOrderBook){
+ //alert("in kitchen");
+ for (const key in ord_id_KitchenOrderBook.result) {
+     if (ord_id_KitchenOrderBook.result.hasOwnProperty(key)) {
+         const element = ord_id_KitchenOrderBook.result[key];
+         console.log(element);
+
+     }
+ }
+}
+});
+console.log("calling ajax");
+}
+   </script>

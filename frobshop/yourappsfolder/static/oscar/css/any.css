@@ -1281,11 +1281,18 @@ html {
     font-weight: 300;
     line-height: 1.4;
   }
+
+  @media (max-width: 768px) {
+    .orderData {
+      padding-left: 15px;
+    }
+  }
   @media (min-width: 768px) {
     .lead {
       font-size: 21px;
     }
   }
+
   small,
   .small {
     font-size: 85%;

@@ -7,6 +7,8 @@ from django.views.generic import TemplateView ,CreateView ,ListView ,UpdateView 
 from django.contrib.auth.models import User
 from ..order.models import Order
 from ..kitchen.models import KitchenOrderBook
+#chirag 14-04-19
+from django.http import JsonResponse
 
 
 #we are overriding  so that on home page we can show all the products
@@ -62,6 +64,7 @@ class HomeView(CoreCatalogueView,ListView):
             #import pdb
             #pdb.set_trace()
             return context
+            #return JsonResponse(ord_id_KitchenOrderBook)
         except:
             pass    
 
