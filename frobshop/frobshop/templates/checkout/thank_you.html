@@ -11,7 +11,7 @@
 {% endblock title %}
 
 {% block checkout_nav %}
-    {% include 'checkout/nav.html' with step=5 %}
+    {% include 'checkout/nav.html' with step=3 %}
 {% endblock %}
 
 {% block checkout_title %}
@@ -30,7 +30,7 @@
     </p>
 
     <div class="row shipping-payment">
-        <div class="col-sm-6">
+        <!-- <div class="col-sm-6">
             {% block shipping_info %}
                 <div class="sub-header">
                     <h2>{% trans "Shipping" %}</h2>
@@ -106,7 +106,7 @@
                 </div>
 
             {% endblock %}
-        </div>
+        </div> -->
     </div>
 
     <div class="sub-header">
