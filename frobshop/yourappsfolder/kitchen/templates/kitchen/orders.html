@@ -3,7 +3,7 @@
     <head>
         {% load static %}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <meta http-equiv="refresh" content="10" />
+        
         <style>
           .table-bordered {
             border-width:30px;
@@ -40,7 +40,25 @@
             background-color: transparent;
           }
         </style>
-        <script type="javascript">
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <script>
+            $(document).ready(function() {
+              setInterval(ajaxd, 10000);
+          });
+          function ajaxd() { 
+            
+  $.ajax({
+   type: "GET",
+   url: "/orders_in_kitchen/",
+   data: "",
+   success: function(items_in_orders){
+     //alert("in kitchen");
+     console.log(items_in_orders);
+   }
+ });
+ console.log("calling ajax");
+}
        </script>
  </head>
  <body>
