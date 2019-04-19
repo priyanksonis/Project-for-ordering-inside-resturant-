@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'debug_toolbar',
     'yourappsfolder.kitchen',
+    'django_extensions',
 
 ] + get_core_apps([
     'yourappsfolder.address',

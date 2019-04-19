@@ -42,7 +42,16 @@ class HomeView(CoreCatalogueView,ListView):
             print(user.first_name)
             print(user.id)
 
+
+            #assert False, user 
+
             order_id_for_crnt_usr=Order.objects.filter(user_id=user.id)
+
+
+            #last_two = Order.objects.filter(user_id=user.id).order_by('-id')[:2]
+            #order_id_for_crnt_usr = reversed(last_two)
+
+
             print(order_id_for_crnt_usr)
             
             #prints all orders ids for logged in usr 
