@@ -40,6 +40,8 @@ from yourappsfolder.kitchen import views
 
 
 
+
+
 urlpatterns = [
     #url(r'^i18n/', include('django.conf.urls.i18n')),
     path('i18n/', include('django.conf.urls.i18n')),  # > Django-2.0
@@ -75,6 +77,8 @@ if settings.DEBUG:
 if settings.DEBUG is True:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+else: #for vedio uploader
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 

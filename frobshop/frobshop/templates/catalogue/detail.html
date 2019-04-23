@@ -54,11 +54,70 @@
         {% block product_gallery %}
         <div class="col-sm-6">
             {% include "catalogue/partials/gallery.html" %}
+
+
+
+
+
+
+
+
+            <h1>Video Uploader</h1>
+            <form enctype="multipart/form-data" method="POST" action="">
+            {% csrf_token %}
+            
+            {{ form.as_p }}
+
+            
+            <input type="submit" value="Upload"/>
+            </form>
+
+            <br><br>
+            <video width='400' controls>
+            <source src='{{ MEDIA_URL }}{{ videofile }}' type='video/mp4'>
+            Your browser does not support the video tag.
+            </video>
+            <br><br>
+            </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </div>
         {% endblock %}
 
         {% block product_main %}
         <div class="col-sm-6 product_main">
+            
+
+        
             {% comment %}
             This is a but clunky here.  Better to have some kind of JS-driven dashboard menu that
             pops out when clicked.  A bit like the Django-Debug-Toolbar button
