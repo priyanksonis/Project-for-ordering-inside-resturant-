@@ -165,3 +165,7 @@ git push origin +newBranch:oldBranch
 
 
 (old brach will be deleted and new branch will come )
+
+-------------------------------------------------------------------------------------------
+issue: The authenticity of host 'github.com (13.234.210.38)' can't be established.
+Solution: https://stackoverflow.com/questions/18710120/the-authenticity-of-host-github-com-192-30-252-128-cant-be-established
